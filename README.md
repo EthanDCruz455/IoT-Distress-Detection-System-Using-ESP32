@@ -38,15 +38,7 @@ This project continuously monitors a patient's **heart rate**, **SpO2 (blood oxy
 
 ## How It Works
 
-```
-                 ┌──────────┐  distress sustained ≥20s   ┌────────┐
-   vitals OK ──▶ │  NORMAL  │ ───────────────────────────▶│ ALERT  │──▶ SMS to User + Doctor
-                 └──────────┘                              └────────┘
-                       ▲          ┌────────────┐                │
-                       │          │ PRE_ALERT  │◀───distress────┘ (recovers)
-                       └──recover─┤  (20s grace)│
-                                  └────────────┘
-```
+![](docs/workflow.png)
 
 Distress is flagged when **any** of the following are true:
 - Heart rate > 120 bpm or < 40 bpm
