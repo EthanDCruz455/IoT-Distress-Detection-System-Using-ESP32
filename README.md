@@ -65,45 +65,8 @@ Install via Library Manager:
 - `OneWire`
 - `DallasTemperature`
 
-Board support: install **ESP32 by Espressif Systems** via Boards Manager.
+Board support: install **ESP32 by Espressif Systems** via Boards Manager in Arduino IDE.
 
-## Setup
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/<your-username>/distress-detection-esp32.git
-   cd distress-detection-esp32
-   ```
-
-2. **Configure credentials**
-   ```bash
-   cp src/secrets.h.example src/secrets.h
-   ```
-   Edit `src/secrets.h` and fill in your own:
-   - WiFi SSID/password
-   - Firebase API key & Realtime Database URL
-   - Twilio Account SID, Auth Token, sender number, and recipient numbers (user + doctor)
-
-   `secrets.h` is git-ignored — it will never be committed.
-
-3. **Get a Firebase project**
-   - Create a project at [firebase.google.com](https://firebase.google.com/)
-   - Enable **Realtime Database** (start in test mode for development, then lock down rules for production)
-   - Enable **Anonymous Authentication** under Authentication → Sign-in method
-
-4. **Get Twilio credentials**
-   - Sign up at [twilio.com](https://www.twilio.com/)
-   - Grab your Account SID and Auth Token from the console
-   - Buy/use a Twilio phone number as the `FROM` number
-
-5. **Open in Arduino IDE**
-   - Open `src/distress_detection_system.ino`
-   - Select board: **ESP32 Dev Module**
-   - Select the correct COM port
-   - Upload
-
-6. **Monitor**
-   - Open Serial Monitor at `115200` baud to view live vitals, state transitions, and SMS/Firebase logs
 
 ## Project Structure
 
@@ -113,7 +76,7 @@ distress-detection-esp32/
 │   ├── distress_detection_system.ino   # Main firmware
 │   ├── secrets.h.example               # Credential template (copy → secrets.h)
 │   └── secrets.h                       # Your real credentials (git-ignored, not in repo)
-├── docs/                               # Wiring diagrams / circuit notes (optional, add your own)
+├── docs/                               # Wiring diagrams / circuit notes
 ├── .gitignore
 └── README.md
 ```
@@ -125,14 +88,22 @@ distress-detection-esp32/
 - Lock down Firebase Realtime Database rules before any real-world/production use; test-mode rules are open to anyone with your database URL.
 - This is a prototype/educational project, **not a certified medical device**. Do not rely on it as a sole means of emergency detection in a real clinical setting.
 
-## Project Name
+## Conclusion
 
-Feel free to rename this however fits your use case — a few options:
-- **VitalGuard** — IoT Patient Distress Detection System
-- **PulseAlert** — ESP32 Wearable Distress Monitor
-- **SentinelVitals** — Real-Time Health Distress Detection & Alert System
-- Or keep it simple: **Distress Detection System using ESP32**
+This project demonstrates a practical, low-cost approach to remote patient monitoring by combining commodity biometric sensors with cloud connectivity and automated emergency alerting. The ESP32's WiFi capability, paired with Firebase for live data sync and Twilio for SMS notifications, makes it possible to bridge the gap between a patient's vitals and the people who need to respond — without requiring constant manual supervision.
+The staged NORMAL → PRE_ALERT → ALERT state machine strikes a balance between responsiveness and reliability, filtering out transient sensor noise while still escalating quickly when distress is sustained. The independent panic-button interrupt ensures the patient always has a direct, immediate line to help, regardless of what the automated system is doing.
+That said, this remains a prototype built for learning and experimentation, not a certified medical device. Real-world deployment would need additional work: sensor calibration and validation against clinical-grade equipment, more robust error handling and retry logic for network/SMS failures, encrypted credential storage, and rigorous testing across edge cases (e.g. intermittent WiFi, sensor disconnection mid-reading). Contributions, suggestions, and forks aimed at hardening the system for more serious use cases are welcome.
 
-## License
-
-Add a license of your choice (MIT is a common permissive default for hardware/firmware projects like this).
+## References
+1)Datasheets
+- MAX30102 Datasheet — Analog Devices / Maxim Integrated
+- DS18B20 Datasheet — Analog Devices / Maxim Integrated
+2)Libraries
+- SparkFun MAX3010x Sensor Library — Arduino driver for the MAX30102/MAX30105; also the source of the spo2_algorithm heart-rate/SpO2 calculation used in this  project
+- Firebase-ESP-Client — Mobizt's Firebase Arduino client library for ESP32/ESP8266
+- OneWire — Arduino library for the 1-Wire protocol used by the DS18B20
+- DallasTemperature — Arduino library built on OneWire for DS18B20-family sensors
+3)Platform / API Docs
+- Arduino-ESP32 Core — Espressif's Arduino core for ESP32
+- Firebase Realtime Database Docs
+- Twilio Programmable Messaging API — Send SMS
