@@ -78,6 +78,12 @@ distress-detection-esp32/
 ├── .gitignore
 └── README.md
 ```
+
+## Results
+
+![Console Output](docs/console_output.png)
+
+
 ## Conclusion
 
 This project demonstrates a practical, low-cost approach to remote patient monitoring by combining commodity biometric sensors with cloud connectivity and automated emergency alerting. The ESP32's WiFi capability, paired with Firebase for live data sync and Twilio for SMS notifications, makes it possible to bridge the gap between a patient's vitals and the people who need to respond — without requiring constant manual supervision.
