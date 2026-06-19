@@ -2,8 +2,6 @@
 
 Real-time vitals monitoring and automated emergency alerting using an ESP32, biometric sensors, Firebase Realtime Database, and Twilio SMS.
 
-> *"Distress Detection System using ESP32" works too — but VitalGuard is the name I'd give it if you want something more memorable for a portfolio, paper, or app store listing. Easy to rename — see [Project Name](#project-name) below.*
-
 ## Overview
 
 This project continuously monitors a patient's **heart rate**, **SpO2 (blood oxygen)**, and **body temperature**, and automatically triggers SMS alerts to a designated user and doctor if vitals cross critical thresholds — or instantly, if a manual panic button is pressed. All sensor data is streamed live to Firebase Realtime Database for remote dashboards/monitoring apps.
@@ -95,15 +93,15 @@ The staged NORMAL → PRE_ALERT → ALERT state machine strikes a balance betwee
 That said, this remains a prototype built for learning and experimentation, not a certified medical device. Real-world deployment would need additional work: sensor calibration and validation against clinical-grade equipment, more robust error handling and retry logic for network/SMS failures, encrypted credential storage, and rigorous testing across edge cases (e.g. intermittent WiFi, sensor disconnection mid-reading). Contributions, suggestions, and forks aimed at hardening the system for more serious use cases are welcome.
 
 ## References
-1)Datasheets
+1)Datasheets:
 - MAX30102 Datasheet — Analog Devices / Maxim Integrated
 - DS18B20 Datasheet — Analog Devices / Maxim Integrated
-2)Libraries
+2)Libraries:
 - SparkFun MAX3010x Sensor Library — Arduino driver for the MAX30102/MAX30105; also the source of the spo2_algorithm heart-rate/SpO2 calculation used in this  project
 - Firebase-ESP-Client — Mobizt's Firebase Arduino client library for ESP32/ESP8266
 - OneWire — Arduino library for the 1-Wire protocol used by the DS18B20
 - DallasTemperature — Arduino library built on OneWire for DS18B20-family sensors
-3)Platform / API Docs
+3)Platform / API Docs:
 - Arduino-ESP32 Core — Espressif's Arduino core for ESP32
 - Firebase Realtime Database Docs
 - Twilio Programmable Messaging API — Send SMS
