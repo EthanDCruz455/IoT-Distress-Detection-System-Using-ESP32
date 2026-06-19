@@ -78,14 +78,6 @@ distress-detection-esp32/
 ├── .gitignore
 └── README.md
 ```
-
-## Security Notes
-
-- **Never commit `secrets.h`.** It's already in `.gitignore`, but double-check before every push.
-- Treat your Twilio Auth Token like a password — anyone with it can send SMS and incur charges on your account. Rotate it immediately if it's ever exposed.
-- Lock down Firebase Realtime Database rules before any real-world/production use; test-mode rules are open to anyone with your database URL.
-- This is a prototype/educational project, **not a certified medical device**. Do not rely on it as a sole means of emergency detection in a real clinical setting.
-
 ## Conclusion
 
 This project demonstrates a practical, low-cost approach to remote patient monitoring by combining commodity biometric sensors with cloud connectivity and automated emergency alerting. The ESP32's WiFi capability, paired with Firebase for live data sync and Twilio for SMS notifications, makes it possible to bridge the gap between a patient's vitals and the people who need to respond — without requiring constant manual supervision.
@@ -93,15 +85,18 @@ The staged NORMAL → PRE_ALERT → ALERT state machine strikes a balance betwee
 That said, this remains a prototype built for learning and experimentation, not a certified medical device. Real-world deployment would need additional work: sensor calibration and validation against clinical-grade equipment, more robust error handling and retry logic for network/SMS failures, encrypted credential storage, and rigorous testing across edge cases (e.g. intermittent WiFi, sensor disconnection mid-reading). Contributions, suggestions, and forks aimed at hardening the system for more serious use cases are welcome.
 
 ## References
-1)Datasheets:
-- MAX30102 Datasheet — Analog Devices / Maxim Integrated
-- DS18B20 Datasheet — Analog Devices / Maxim Integrated
-2)Libraries:
-- SparkFun MAX3010x Sensor Library — Arduino driver for the MAX30102/MAX30105; also the source of the spo2_algorithm heart-rate/SpO2 calculation used in this  project
-- Firebase-ESP-Client — Mobizt's Firebase Arduino client library for ESP32/ESP8266
-- OneWire — Arduino library for the 1-Wire protocol used by the DS18B20
-- DallasTemperature — Arduino library built on OneWire for DS18B20-family sensors
-3)Platform / API Docs:
-- Arduino-ESP32 Core — Espressif's Arduino core for ESP32
-- Firebase Realtime Database Docs
-- Twilio Programmable Messaging API — Send SMS
+
+**Datasheets**
+- [MAX30102 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/max30102.pdf) — Analog Devices / Maxim Integrated
+- [DS18B20 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf) — Analog Devices / Maxim Integrated
+
+**Libraries**
+- [SparkFun MAX3010x Sensor Library](https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library) — Arduino driver for the MAX30102/MAX30105; also the source of the `spo2_algorithm` heart-rate/SpO2 calculation used in this project
+- [Firebase-ESP-Client](https://github.com/mobizt/Firebase-ESP-Client) — Mobizt's Firebase Arduino client library for ESP32/ESP8266
+- [OneWire](https://www.arduino.cc/reference/en/libraries/onewire/) — Arduino library for the 1-Wire protocol used by the DS18B20
+- [DallasTemperature](https://github.com/milesburton/Arduino-Temperature-Control-Library) — Arduino library built on OneWire for DS18B20-family sensors
+
+**Platform / API Docs**
+- [Arduino-ESP32 Core](https://github.com/espressif/arduino-esp32) — Espressif's Arduino core for ESP32
+- [Firebase Realtime Database Docs](https://firebase.google.com/docs/database)
+- [Twilio Programmable Messaging API — Send SMS](https://www.twilio.com/docs/messaging/api/message-resource)
