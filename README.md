@@ -74,6 +74,8 @@ distress-detection-esp32/
 ## Results
 
 ![Console Output](docs/console_output.png)
+![Twillio Output](docs/twilio_output.png)
+
 
 
 ## Conclusion
