@@ -18,14 +18,13 @@ Developed as part of the IoT Lab at N.M.A.M. Institute of Technology, Nitte — 
 - [Features](#features)
 - [System Architecture](#system-architecture)
 - [Working Principle](#working-principle)
-- [Hardware Requirements](#hardware-requirements)
-- [Software Requirements](#software-requirements)
+- [Hardware Requirements](#-hardware-requirements)
+- [Software Requirements](#-software-requirements)
 - [Getting Started](#getting-started)
 - [Results](#results)
 - [Limitations & Future Work](#limitations--future-work)
 - [Team](#team)
 - [References](#references)
-- [License](#license)
 
 ---
 
@@ -56,26 +55,7 @@ Emergency situations — especially for elderly individuals or people with chron
 
 ## System Architecture
 
-```
-   ┌───────────────┐      ┌─────────────────┐      ┌────────────────┐
-   │   Sensors     │      |      ESP32      │      │  Cloud Layer   │
-   │ MAX30102      │─────>|  - Data read    │─────>│  Firebase DB   │
-   │ DS18B20       │      │  - Wi-Fi comms  │      │  (storage +    │
-   │ Panic Button  │─────>│  - Threshold /  │<─────│   monitoring)  │
-   └───────────────┘      │    state logic  │      └────────────────┘
-                          └────────┬────────┘
-                                   │ Distress detected
-                                   |
-                                   ▼
-                          ┌─────────────────┐
-                          │   Twilio API    │
-                          │  SMS Alert to   │
-                          │ predefined      │
-                          │ contacts        │
-                          └─────────────────┘
-```
-
-*(Replace this ASCII diagram with `assets/block_diagram.png` from your report's Figure 3.1 once added to the repo.)*
+![System_Architecture](docs/diagramm.png)
 
 ---
 
