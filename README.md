@@ -104,6 +104,8 @@ Emergency situations — especially for elderly individuals or people with chron
 | Power Supply | USB or battery power |
 
 ## 🔌 Pin Connections
+![Wiring Diagram](docs/diagram.png)
+
 Pin Connection Reference — ESP32 to Sensors
 
 MAX30102 (Heart Rate / SpO2 Sensor)
