@@ -174,7 +174,22 @@ The system was assembled and tested successfully:
 - The state-based approach (`NORMAL → PRE-ALERT → ALERT`) reliably reduced false alarms by requiring abnormal conditions to persist before triggering an alert.
 - SMS alerts were sent correctly and promptly upon distress detection, with minor delays attributable to sensor sampling and communication intervals.
 
-*(Add your Figures 5.1–5.3 — project setup, message output, console output — to `assets/` and reference them here.)*
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="docs/setup.png" width="250"/><br/>
+      <sub><b>Project setup</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="docs/console_output.png" width="250"/><br/>
+      <sub><b>Console output</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="docs/twilio_output.png" width="250"/><br/>
+      <sub><b>SMS output</b></sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
